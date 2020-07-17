@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="Author" content="남영진"/>
+<meta name="Keywords" content="실습용"/>
+<meta name="Description" content="열심히 해서 돈 많이 벌어야지..."/>
+<title>숫자 게임</title>
+<style>
+#tittle{
+	background-color: green;
+	padding: 10px; 10px; 7px; 7px;
+	width: 800px;
+	margin: 10px auto;
+}
+
+#main{
+	background-color: red;
+	width: 600px;
+	margin: 10px auto;
+	border: 1px dotted gray;
+}
+
+#result{
+	background-color: #f0f0f0;
+	width: 600px;
+	margin: 10px auto
+	padding: 10px;
+}
+</style>
+
+<script>
+var NUM;
+var TRY_COUNT;
+
+function NewGame(){
+	NUM= parseInt(Math.random() * 100)+1;
+	alert(NUM);
+	TRY_COUNT=0;
+
+	document.getElementById('result').innerHTML= "";
+}
+
+function ShowResult() {
+	var num = document.getElementById('num').value;
+	var res = "정답이애오.<hr/><input type='button' value='한판 더' onClick='NewGame();'/>";
+
+	if (NUM > num) {
+		res = "<b>" + num + " </b>보다 더 큰수애오.";
+	}
+	else if (NUM < num) {
+		res = "<b>" + num + " </b> 보다 더 적은수애오.";
+	}
+
+	TRY_COUNT++;
+
+	document.getElementById('result').innerHTML += TRY_COUNT + "번째 시도애오:" + res + "<br/>";
+
+	document.getElementById('num').value = "";
+	document.getElementById('num').focus();
+}
+</script>
+</head>
+<body>
+<div id="tittle">
+	<h2>재미있는 숫자게임</h2>
+	<p>컴퓨터가 생성하누1부터 100까지의 수 중 하나를 맞추는 운빨게임.</p>
+</div>
+<div id="main">
+	입력(1~100) <input type="text" id="num"/> <input type="button" value="확인" onClick="ShowResult();"/>
+</div>
+
+<div id="result">
+	결과를 표시하기 위한 영역
+</div>
+</body>
+</html>>
